@@ -12,9 +12,11 @@ import com.facebook.react.common.LifecycleState;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.facebook.react.shell.MainReactPackage;
 import com.hjq.mall.reactnative.ReactNativePackage;
+import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -31,16 +33,21 @@ public class BaseRnActivity extends AppCompatActivity implements DefaultHardware
         builder.setApplication(getApplication());
         builder.setBundleAssetName("index.android.bundle");
         builder.setJSMainModulePath("index");
-        builder.addPackage(new MainReactPackage());
-        builder.addPackage(new ReactNativePackage());
-        builder.setUseDeveloperSupport(BuildConfig.DEBUG);
+        builder.addPackages(
+                    Arrays.<ReactPackage>asList(
+                    new MainReactPackage(),
+                    new ReactNativePackage(),
+                    new RNGestureHandlerPackage())
+        );
+        builder.setUseDeveloperSupport(false);
         builder.setInitialLifecycleState(LifecycleState.BEFORE_RESUME);
-        builder.build();
+        mReactInstanceManager = builder.build();
         //这里的AndroidRnDemoApp必须对应“index.js”中的“AppRegistry.registerComponent()”的第一个参数
         mReactRootView.startReactApplication(mReactInstanceManager, "RNHighScores", null);
         //加载ReactRootView到布局中
         setContentView(mReactRootView);
     }
+
     @Override
     public void invokeDefaultOnBackPressed() {
         super.onBackPressed();

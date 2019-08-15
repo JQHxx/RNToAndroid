@@ -7,6 +7,7 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 import com.hjq.mall.reactnative.ReactNativePackage;
+import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,6 +17,8 @@ import java.util.List;
  * Created by Devil on 2018/2/5.
  */
 public class MyApp extends Application implements ReactApplication{
+
+    private  static MyApp instance;
 
     private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
         @Override
@@ -29,7 +32,8 @@ public class MyApp extends Application implements ReactApplication{
         protected List<ReactPackage> getPackages() {
             return Arrays.<ReactPackage>asList(
                     new MainReactPackage(),
-                    new ReactNativePackage()
+                    new ReactNativePackage(),
+                    new RNGestureHandlerPackage()
             );
         }
 
@@ -47,8 +51,13 @@ public class MyApp extends Application implements ReactApplication{
     @Override
     public void onCreate() {
         super.onCreate();
+        instance = this;
         // nativeExopackage本地包
         SoLoader.init(this, /* native exopackage */ false);
+    }
+
+    static  synchronized MyApp getInstance() {
+        return instance;
     }
 
 }
