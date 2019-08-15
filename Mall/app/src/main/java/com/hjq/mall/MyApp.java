@@ -45,6 +45,7 @@ public class MyApp extends Application implements ReactApplication{
     @Override
     public void onCreate() {
         super.onCreate();
+        // nativeExopackage本地包
         SoLoader.init(this, /* native exopackage */ false);
     }
 
