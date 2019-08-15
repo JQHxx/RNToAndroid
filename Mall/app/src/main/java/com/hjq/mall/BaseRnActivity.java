@@ -5,10 +5,16 @@ import android.view.KeyEvent;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactInstanceManager;
+import com.facebook.react.ReactInstanceManagerBuilder;
+import com.facebook.react.ReactPackage;
 import com.facebook.react.ReactRootView;
 import com.facebook.react.common.LifecycleState;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.facebook.react.shell.MainReactPackage;
+import com.hjq.mall.reactnative.ReactNativePackage;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,14 +27,15 @@ public class BaseRnActivity extends AppCompatActivity implements DefaultHardware
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mReactRootView = new ReactRootView(this);
-        mReactInstanceManager = ReactInstanceManager.builder()
-                .setApplication(getApplication())
-                .setBundleAssetName("index.android.bundle")
-                .setJSMainModulePath("index")
-                .addPackage(new MainReactPackage())
-                .setUseDeveloperSupport(BuildConfig.DEBUG)
-                .setInitialLifecycleState(LifecycleState.BEFORE_RESUME)
-                .build();
+        ReactInstanceManagerBuilder builder = ReactInstanceManager.builder();
+        builder.setApplication(getApplication());
+        builder.setBundleAssetName("index.android.bundle");
+        builder.setJSMainModulePath("index");
+        builder.addPackage(new MainReactPackage());
+        builder.addPackage(new ReactNativePackage());
+        builder.setUseDeveloperSupport(BuildConfig.DEBUG);
+        builder.setInitialLifecycleState(LifecycleState.BEFORE_RESUME);
+        builder.build();
         //这里的AndroidRnDemoApp必须对应“index.js”中的“AppRegistry.registerComponent()”的第一个参数
         mReactRootView.startReactApplication(mReactInstanceManager, "RNHighScores", null);
         //加载ReactRootView到布局中
