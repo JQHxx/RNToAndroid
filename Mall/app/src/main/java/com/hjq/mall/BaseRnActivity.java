@@ -46,6 +46,8 @@ public class BaseRnActivity extends AppCompatActivity implements DefaultHardware
         mReactRootView.startReactApplication(mReactInstanceManager, "RNHighScores", null);
         //加载ReactRootView到布局中
         setContentView(mReactRootView);
+
+        // mReactRootView.setAppProperties();
     }
 
     @Override
