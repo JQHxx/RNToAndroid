@@ -7,6 +7,7 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 import com.hjq.mall.reactnative.ReactNativePackage;
+import com.hjq.mall.utils.CrashHandler;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 
 import java.util.Arrays;
@@ -52,6 +53,7 @@ public class MyApp extends Application implements ReactApplication{
     public void onCreate() {
         super.onCreate();
         instance = this;
+        new CrashHandler(this);
         // nativeExopackage本地包
         SoLoader.init(this, /* native exopackage */ false);
     }
