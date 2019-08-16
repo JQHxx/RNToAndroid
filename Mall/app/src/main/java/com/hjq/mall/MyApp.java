@@ -6,8 +6,10 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
+import com.hjq.cardview.RNCardviewPackage;
 import com.hjq.mall.reactnative.ReactNativePackage;
 import com.hjq.mall.utils.CrashHandler;
+import com.reactnativecommunity.webview.RNCWebViewPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 
 import java.util.Arrays;
@@ -34,7 +36,9 @@ public class MyApp extends Application implements ReactApplication{
             return Arrays.<ReactPackage>asList(
                     new MainReactPackage(),
                     new ReactNativePackage(),
-                    new RNGestureHandlerPackage()
+                    new RNGestureHandlerPackage(),
+                    new RNCardviewPackage(),
+                    new RNCWebViewPackage()
             );
         }
 

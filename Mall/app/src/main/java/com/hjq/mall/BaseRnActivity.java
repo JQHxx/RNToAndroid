@@ -11,7 +11,9 @@ import com.facebook.react.ReactRootView;
 import com.facebook.react.common.LifecycleState;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.facebook.react.shell.MainReactPackage;
+import com.hjq.cardview.RNCardviewPackage;
 import com.hjq.mall.reactnative.ReactNativePackage;
+import com.reactnativecommunity.webview.RNCWebViewPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 
 import java.lang.reflect.Array;
@@ -37,7 +39,9 @@ public class BaseRnActivity extends AppCompatActivity implements DefaultHardware
                     Arrays.<ReactPackage>asList(
                     new MainReactPackage(),
                     new ReactNativePackage(),
-                    new RNGestureHandlerPackage())
+                    new RNGestureHandlerPackage(),
+                    new RNCardviewPackage(),
+                    new RNCWebViewPackage())
         );
         builder.setUseDeveloperSupport(false);
         builder.setInitialLifecycleState(LifecycleState.BEFORE_RESUME);

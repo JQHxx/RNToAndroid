@@ -25,7 +25,8 @@
     "react-native-simple-store": "^2.0.0",
     "react-native-swiper": "^1.5.14",
     "react-native-webview": "^5.12.1",
-    "react-native-refresh-list-view": "^1.0.10"
+    "react-native-refresh-list-view": "^1.0.10",
+    "rn-cardview": "^1.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
